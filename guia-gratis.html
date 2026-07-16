@@ -45,8 +45,8 @@
         <li>Onde achar cliente (5 lugares práticos)</li>
         <li>A mensagem pronta pra fazer o 1º contato</li>
       </ul>
-      <!-- Trocar o action pelo seu endpoint do Formspree (ver instrucoes). -->
-      <form id="lead" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+      <!-- Leads caem no Google Forms -> Google Sheets (aba Respostas do formulario). -->
+      <form id="lead">
         <input type="text" name="nome" placeholder="Seu primeiro nome" required>
         <input type="email" name="email" placeholder="Seu melhor e-mail" required>
         <button type="submit">QUERO O GUIA GRÁTIS 🎁</button>
@@ -65,14 +65,16 @@
   </div>
 
 <script>
+  var GFORM='https://docs.google.com/forms/d/e/1FAIpQLSfD5Y58BzpZdWwI-eU_puhbvSla6Ka7GFzTgX_9hXvJqyaiYQ/formResponse';
   var form = document.getElementById('lead');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    // 1) tenta enviar o lead pro Formspree (se estiver configurado)
+    // 1) grava o lead no Google Forms -> Google Sheets
     try {
-      if (form.action.indexOf('SEU_ID_AQUI') === -1) {
-        fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
-      }
+      var fd = new FormData();
+      fd.append('entry.1779136068', form.querySelector('[name=nome]').value);   // Nome
+      fd.append('entry.1347666142', form.querySelector('[name=email]').value);  // E-mail
+      fetch(GFORM, { method:'POST', body:fd, mode:'no-cors' });
     } catch(_) {}
     // 2) sempre entrega o guia na hora
     document.getElementById('offer').style.display='none';
