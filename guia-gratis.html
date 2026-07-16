@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia grátis — 3 serviços digitais que pagam | ArtCod</title>
+<meta name="description" content="Baixe grátis: 3 serviços digitais que pagam de R$50 a R$500 e onde achar seu primeiro cliente.">
+<style>
+  :root{ --green:#0d5544; --green-d:#052019; --green-m:#15795f; --gold:#F2C14E; --gold-d:#D89E1F; --cream:#FFF7E6; }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,Arial,sans-serif;}
+  body{background:linear-gradient(160deg,var(--green-m) 0%,var(--green) 55%,var(--green-d) 100%);min-height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .card{background:rgba(255,255,255,0.04);border:1px solid rgba(242,193,78,0.25);border-radius:22px;max-width:520px;width:100%;padding:38px 32px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+  .coin{width:64px;height:64px;border-radius:50%;background:linear-gradient(var(--gold),var(--gold-d));color:var(--green);font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center;letter-spacing:-1px;margin:0 auto 18px;}
+  .tag{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:12px;margin-bottom:14px;}
+  h1{font-size:30px;line-height:1.18;margin-bottom:14px;}
+  h1 .g{color:var(--gold);}
+  .sub{color:var(--cream);font-size:15px;line-height:1.55;margin-bottom:22px;}
+  ul{list-style:none;text-align:left;max-width:380px;margin:0 auto 26px;}
+  ul li{font-size:15px;line-height:1.5;color:#eafff5;margin-bottom:12px;padding-left:30px;position:relative;}
+  ul li::before{content:"✓";position:absolute;left:0;top:0;width:20px;height:20px;background:var(--gold);color:var(--green);border-radius:50%;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  form{display:flex;flex-direction:column;gap:12px;}
+  input{width:100%;padding:15px 18px;border-radius:12px;border:none;font-size:16px;outline:none;}
+  input::placeholder{color:#7c8a84;}
+  button{background:linear-gradient(var(--gold),var(--gold-d));color:var(--green);font-weight:800;font-size:17px;letter-spacing:.3px;border:none;border-radius:12px;padding:16px;cursor:pointer;transition:transform .1s;}
+  button:hover{transform:translateY(-2px);}
+  .privacy{font-size:12px;color:#9fb3ac;margin-top:14px;}
+  .ok{display:none;}
+  .ok h2{font-size:26px;margin-bottom:12px;color:var(--gold);}
+  .ok p{font-size:15px;color:var(--cream);line-height:1.55;margin-bottom:22px;}
+  .dl{display:inline-block;background:linear-gradient(var(--gold),var(--gold-d));color:var(--green);font-weight:800;font-size:17px;padding:16px 30px;border-radius:12px;text-decoration:none;}
+  .foot{margin-top:26px;font-size:12px;color:#8fa39c;}
+  .foot b{color:var(--gold);}
+</style>
+</head>
+<body>
+  <div class="card">
+    <!-- FORM STATE -->
+    <div id="offer">
+      <div class="coin">AC</div>
+      <div class="tag">GUIA GRÁTIS — ARTCOD</div>
+      <h1>3 serviços digitais que pagam de <span class="g">R$50 a R$500</span></h1>
+      <p class="sub">Baixe grátis e descubra os 3 serviços simples pra começar do zero <b>e onde achar seu primeiro cliente</b> — do celular, sem aparecer.</p>
+      <ul>
+        <li>Os 3 serviços e <b>quanto cobrar</b> em cada um</li>
+        <li>Onde achar cliente (5 lugares práticos)</li>
+        <li>A mensagem pronta pra fazer o 1º contato</li>
+      </ul>
+      <!-- Trocar o action pelo seu endpoint do Formspree (ver instrucoes). -->
+      <form id="lead" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+        <input type="text" name="nome" placeholder="Seu primeiro nome" required>
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+        <button type="submit">QUERO O GUIA GRÁTIS 🎁</button>
+      </form>
+      <p class="privacy">Sem spam. Você recebe o guia na hora e dicas de renda extra de vez em quando.</p>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div id="done" class="ok">
+      <div class="coin">AC</div>
+      <h2>Pronto! Seu guia está aqui 🎉</h2>
+      <p>Clique abaixo pra baixar. Dá uma olhada nos 3 serviços e escolha UM pra começar hoje.</p>
+      <a class="dl" href="isca-3-servicos.pdf" target="_blank" download>BAIXAR O GUIA (PDF)</a>
+      <div class="foot">Gostou? O passo a passo completo está no guia <b>Primeiros R$100 por Dia</b> — use o cupom <b>COMECE10</b>.</div>
+    </div>
+  </div>
+
+<script>
+  var form = document.getElementById('lead');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    // 1) tenta enviar o lead pro Formspree (se estiver configurado)
+    try {
+      if (form.action.indexOf('SEU_ID_AQUI') === -1) {
+        fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      }
+    } catch(_) {}
+    // 2) sempre entrega o guia na hora
+    document.getElementById('offer').style.display='none';
+    document.getElementById('done').style.display='block';
+  });
+</script>
+</body>
+</html>
