@@ -4,6 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Primeiros R$100 por Dia — Renda extra no celular</title>
+<!--
+  PÁGINA DE VENDAS — "Primeiros R$100 por Dia"
+  - Todos os botões já apontam para o seu checkout real: https://pay.kiwify.com.br/na7mAUF
+  - Onde está <!-- VSL -->: cole o embed do seu vídeo quando gravar (Vturb/YouTube).
+  - Hospede este arquivo (Kiwify Pages / seu domínio) e use como sua página de vendas.
+-->
+
+<!-- ===== META PIXEL "LuPixe" (ID 1233653978654582) =====
+     Dispara automaticamente:
+       • PageView       -> toda visita
+       • ViewContent    -> toda visita (pessoa viu a oferta)
+       • InitiateCheckout -> quando clica em qualquer botão de compra
+     O evento PURCHASE (compra) NÃO é disparado aqui — ele é
+     disparado pela KIWIFY. Veja o guia PIXEL-Como-Configurar.md
+     ======================================================= -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1233653978654582');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name:'Primeiros R$100 por Dia', content_type:'product', value:47.00, currency:'BRL'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1233653978654582&ev=PageView&noscript=1"/></noscript>
+<!-- ===== FIM DO PIXEL ===== -->
+
 <style>
   :root{ --verde:#0F5C4E; --verde-esc:#0b463b; --ouro:#E0A81E; --bg:#f7faf9; }
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -14,7 +46,7 @@
   .hero h1{ font-size:34px; line-height:1.15; margin:18px 0 12px; }
   .hero h1 span{ color:var(--ouro); }
   .hero p.sub{ font-size:18px; color:#d1fae5; max-width:620px; margin:0 auto; }
-  .vsl{ margin:24px auto 0; max-width:660px; }
+  .vsl{ background:#00000030; border:2px dashed #ffffff55; border-radius:12px; padding:60px 20px; margin:24px auto 0; max-width:640px; color:#d1fae5; font-size:14px; }
   .btn{ display:block; max-width:560px; margin:22px auto 6px; background:#16a34a; color:#fff; text-decoration:none; text-align:center; font-size:21px; font-weight:800; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(22,163,74,.35); }
   .btn small{ display:block; font-weight:500; font-size:13px; opacity:.92; margin-top:4px; }
   .btn:hover{ filter:brightness(1.05); }
@@ -41,8 +73,28 @@
   .faq details:last-child{ border-bottom:none; }
   .faq summary{ font-weight:700; color:var(--verde); cursor:pointer; }
   .faq p{ margin-top:8px; color:#374151; }
-  footer{ text-align:center; padding:30px 18px; color:#9ca3af; font-size:12px; }
+  footer{ text-align:center; padding:30px 18px 96px; color:#9ca3af; font-size:12px; }
   footer a{ color:var(--verde); }
+  /* selos de confiança */
+  .trust{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; margin:14px auto 0; max-width:560px; color:#eafaf4; font-size:13px; }
+  .trust span{ display:inline-flex; align-items:center; gap:6px; }
+  .paybar{ text-align:center; color:#6b7280; font-size:13px; margin:8px auto 0; }
+  /* para quem é / não é */
+  .fit{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .fit .col{ background:#fff; border-radius:14px; padding:20px 22px; box-shadow:0 4px 16px rgba(0,0,0,.05); }
+  .fit .col.no{ background:#fef2f2; }
+  .fit h3{ font-size:16px; margin-bottom:10px; }
+  .fit .col.yes h3{ color:var(--verde); }
+  .fit .col.no h3{ color:#b91c1c; }
+  .fit li{ list-style:none; padding:6px 0 6px 26px; position:relative; font-size:14.5px; }
+  .fit .col.yes li::before{ content:"✔"; position:absolute; left:0; color:var(--ouro); font-weight:bold; }
+  .fit .col.no li::before{ content:"✕"; position:absolute; left:0; color:#b91c1c; font-weight:bold; }
+  .urg{ background:#fff7ed; border:1px dashed var(--ouro); border-radius:10px; padding:12px 16px; text-align:center; color:#92400e; font-size:14px; max-width:560px; margin:0 auto 6px; }
+  /* barra fixa mobile */
+  .sticky{ position:fixed; left:0; right:0; bottom:0; background:#fff; box-shadow:0 -4px 18px rgba(0,0,0,.12); padding:10px 14px; display:none; z-index:50; }
+  .sticky a{ display:block; background:#16a34a; color:#fff; text-decoration:none; text-align:center; font-weight:800; font-size:17px; padding:14px; border-radius:10px; }
+  .sticky small{ display:block; font-weight:500; font-size:11px; opacity:.9; }
+  @media(max-width:640px){ .sticky{ display:block; } .hero h1{ font-size:28px; } .fit{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -52,13 +104,19 @@
     <span class="selo">RENDA EXTRA DE VERDADE</span>
     <h1>Como fazer seus primeiros <span>R$100 por dia</span> usando só o celular</h1>
     <p class="sub">O passo a passo realista para criar uma renda extra prestando serviços digitais simples — mesmo começando do zero, sem aparecer e sem investir nada.</p>
-    <div class="vsl">
+    <div class="vsl" style="padding:0;border:none;background:transparent;max-width:660px;">
       <video controls playsinline preload="metadata" poster="vsl-poster.png" style="width:100%;border-radius:12px;display:block;box-shadow:0 8px 30px rgba(0,0,0,.35);">
         <source src="vsl-artcod.mp4" type="video/mp4">
         Seu navegador não suporta vídeo. <a href="vsl-artcod.mp4" style="color:#E0A81E;">Baixe o vídeo aqui</a>.
       </video>
     </div>
     <a class="btn" href="https://pay.kiwify.com.br/na7mAUF">QUERO COMEÇAR AGORA — R$47 <small>Acesso imediato · 7 dias de garantia</small></a>
+    <div class="trust">
+      <span>🔒 Compra 100% segura</span>
+      <span>⚡ Acesso imediato</span>
+      <span>🛡️ Garantia de 7 dias</span>
+      <span>💳 Pix ou cartão</span>
+    </div>
   </div>
 </header>
 
@@ -98,6 +156,32 @@
 
 <section>
   <div class="wrap">
+    <h2>Este guia é pra você?</h2>
+    <div class="fit">
+      <div class="col yes">
+        <h3>É pra você se…</h3>
+        <ul>
+          <li>Quer uma renda extra real, sem promessa de ficar rico</li>
+          <li>Tem só o celular e 1 hora por dia</li>
+          <li>Começa do zero e quer um passo a passo claro</li>
+          <li>Prefere trabalhar nos bastidores, sem aparecer</li>
+        </ul>
+      </div>
+      <div class="col no">
+        <h3>Não é pra você se…</h3>
+        <ul>
+          <li>Procura enriquecer da noite pro dia sem esforço</li>
+          <li>Não está disposto a aplicar nem 1 hora por dia</li>
+          <li>Quer algo 100% automático, sem atender ninguém</li>
+          <li>Acha que resultado vem sem ação</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <h2>O que você recebe hoje</h2>
     <div class="oferta">
       <ul>
@@ -106,10 +190,14 @@
         <li>🎁 <strong>Bônus 2 — Kit de Mensagens Prontas</strong> para fechar clientes <em>(R$37)</em></li>
         <li>🎁 <strong>Bônus 3 — Guia Express de Afiliados</strong> — 2ª fonte de renda <em>(R$27)</em></li>
         <li>🎁 <strong>Bônus 4 — Checklist do Primeiro R$100</strong> <em>(R$19)</em></li>
+        <li>🔥 <strong>Bônus 5 — Plano de 7 Dias: Do Zero ao Primeiro Cliente</strong> — o que fazer em cada dia da semana <em>(R$47)</em></li>
+        <li>🎧 <strong>Bônus 6 — Guia em ÁUDIO (áudiobook completo)</strong> — ouça no trajeto, na academia ou lavando a louça. Sem tempo pra ler? Agora não tem desculpa <em>(R$37)</em></li>
       </ul>
-      <p class="de">Valor total: R$217</p>
+      <p class="de">Valor total: R$301</p>
       <p class="por">Hoje: R$47</p>
+      <div class="urg">🔥 Preço de lançamento. Assim que os primeiros alunos entrarem, o valor volta para R$97.</div>
       <a class="btn" href="https://pay.kiwify.com.br/na7mAUF">GARANTIR MEU ACESSO — R$47 <small>Pagamento único · acesso na hora</small></a>
+      <p class="paybar">💳 Pix ou cartão em até 12x · 🔒 pagamento seguro pela Kiwify</p>
     </div>
   </div>
 </section>
@@ -131,7 +219,8 @@
       <details><summary>Preciso aparecer / mostrar o rosto?</summary><p>Não. A maioria dos serviços é feita nos bastidores.</p></details>
       <details><summary>Preciso investir dinheiro?</summary><p>Não para começar. Todas as ferramentas indicadas são gratuitas.</p></details>
       <details><summary>Em quanto tempo vejo resultado?</summary><p>Depende da sua dedicação. Muitos fazem a primeira venda na primeira semana aplicando o passo a passo. Não é garantia — é possibilidade real.</p></details>
-      <details><summary>Como recebo o material?</summary><p>Assim que o pagamento é aprovado, o acesso chega no seu e-mail na hora.</p></details>
+      <details><summary>Não tenho tempo (nem paciência) para ler. Serve para mim?</summary><p>Serve. Além do guia escrito, você recebe o <strong>áudiobook completo</strong>: é só colocar o fone e ouvir no trajeto, na academia ou fazendo as tarefas de casa. Dá para absorver o método inteiro sem sentar para ler uma página.</p></details>
+      <details><summary>Como recebo o material?</summary><p>Assim que o pagamento é aprovado, o acesso chega no seu e-mail na hora — o guia em PDF, o áudiobook e todos os bônus.</p></details>
     </div>
   </div>
 </section>
@@ -147,6 +236,24 @@
 <footer>
   <p>@artcodvendas · Material educacional. Valores citados são exemplos e não representam garantia de ganho. Resultados variam conforme dedicação.</p>
 </footer>
+
+<div class="sticky">
+  <a href="https://pay.kiwify.com.br/na7mAUF">QUERO COMEÇAR — R$47 <small>Acesso imediato · 7 dias de garantia</small></a>
+</div>
+
+<!-- ===== PIXEL: dispara InitiateCheckout ao clicar em qualquer botão de compra ===== -->
+<script>
+document.addEventListener('click', function(e){
+  var link = e.target.closest('a[href*="pay.kiwify.com.br"]');
+  if(link && typeof fbq === 'function'){
+    fbq('track', 'InitiateCheckout', {
+      content_name: 'Primeiros R$100 por Dia',
+      value: 47.00,
+      currency: 'BRL'
+    });
+  }
+});
+</script>
 
 </body>
 </html>
