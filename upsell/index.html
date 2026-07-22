@@ -4,6 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oferta Exclusiva — Acelerador</title>
+<!--
+  ============================================================
+  PÁGINA DE ACEITE DO UPSELL (1-CLIQUE) — KIWIFY
+  ============================================================
+  STATUS: JÁ CONFIGURADA. Os botões usam o snippet oficial da
+  Kiwify (script upsell.min.js + IDs kiwify-upsell-*-GjA8RHK),
+  gerado para a oferta "Acelerador: De R$100 a R$300 por Dia".
+  Não precisa colar links manualmente — o script cuida do 1-clique.
+
+  IMPORTANTE: esta é a versão CORRIGIDA. A versão publicada em
+  lulzz.github.io/artcod-vendas/upsell/ estava DESATUALIZADA.
+  Basta subir/republicar este arquivo no GitHub para corrigir.
+  ============================================================
+-->
 <style>
   :root{ --laranja:#ea580c; --escuro:#7c2d12; --bg:#fff7ed; }
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -48,13 +62,11 @@
       <div class="por">por apenas R$97</div>
     </div>
 
-    <!-- TROQUE o href pelo LINK DE ACEITAR gerado pela Kiwify -->
-    <a class="btn-sim" href="COLE_AQUI_O_LINK_DE_ACEITAR">
-      SIM, QUERO ACELERAR POR R$97
-      <small>Adicionar com 1 clique — sem digitar cartão de novo</small>
-    </a>
-    <!-- TROQUE o href pelo LINK DE RECUSAR gerado pela Kiwify -->
-    <a class="btn-nao" href="COLE_AQUI_O_LINK_DE_RECUSAR">Não, obrigado. Prefiro seguir só com o guia básico.</a>
+    <div style="text-align:center" id="kiwify-upsell-GjA8RHK" data-upsell-url="" data-downsell-url="">
+      <button id="kiwify-upsell-trigger-GjA8RHK" class="btn-sim" style="width:100%;border:none;cursor:pointer;">SIM, QUERO ACELERAR POR R$97<small>Adicionar com 1 clique — sem digitar cartão de novo</small></button>
+      <div id="kiwify-upsell-cancel-trigger-GjA8RHK" class="btn-nao" style="cursor:pointer;">Não, obrigado. Prefiro seguir só com o guia básico.</div>
+    </div>
+    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
     <div class="selo-garantia">🛡️ <strong>Mesma garantia de 7 dias.</strong> Se não valer, você recebe seu dinheiro de volta. O risco é todo meu.</div>
   </div>
